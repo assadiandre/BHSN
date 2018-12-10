@@ -8,19 +8,20 @@
 
 </head>
 <body>
-
   <div class="stuck-header-index">
-
-      <form class="submit_form" method="post" action="/newpost">
-        <input name="submit" class="submit_button" type="submit" value="+">
+      <form class="submit_form" method="post" action="/cancelpost">
+        <input class="submit_button" type="submit" value="x">
       </form>
-
-
       <div class="login-signup-index">
         <a href="/profile" class="btn btn-default" <span class="fa fa-user"></span> <%= first_name + " " + last_name %> </a>
       </div>
-
   </div>
+
+  <form method="post" action="/submitpost">
+    <input name="postname" type="text" value="Men's Var Soccer">
+    <input name="postdes" type="text" value="Description">
+    <input name="submit" type="submit" value="Submit">
+  </form>
 
 </body>
 </html>

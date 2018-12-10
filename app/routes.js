@@ -25,6 +25,21 @@ module.exports = function(app, passport) {
         res.render('login.ejs', { message: req.flash('loginMessage') });
     });
 
+    app.post("/submitpost", function(req,res) {
+      console.log(req.body);
+      res.redirect("/");
+    })
+
+    app.post("/cancelpost", function(req,res) {
+      res.redirect("/");
+    })
+
+    app.post('/newpost', function(req,res) {
+      var firstName = req.user.local.first_name;
+      var lastName = req.user.local.last_name;
+      res.render('newpost.ejs', {first_name: firstName, last_name: lastName})
+    })
+
     // process the login form
     app.post('/login', passport.authenticate('local-login', {
         successRedirect : '/', // redirect to the secure profile section
