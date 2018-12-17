@@ -1,19 +1,48 @@
 // app/routes.js
-module.exports = function(app, passport) {
+module.exports = function(app, passport, SportPost, User) {
 
     // =====================================
     // HOME PAGE (with login links) ========
     // =====================================
     app.get('/', function(req, res) {
+      SportPost.find({},function(err,posts) {
+        var postsMap = {};
+        posts.forEach(function(post) {
+          postsMap[post._id] = post;
+        });
         if (req.isAuthenticated()) {
           var firstName = req.user.local.first_name;
           var lastName = req.user.local.last_name;
-          res.render('main_logged.ejs', {first_name: firstName, last_name: lastName});
+          res.render('main_logged.ejs', {first_name: firstName, last_name: lastName,sports_data:postsMap});
         }
         else {
-          res.render('index.ejs'); // load the index.ejs file
+          res.render('index.ejs',{sports_data:postsMap}); // load the index.ejs file
         }
+      })
     });
+
+    app.get('/ajaxcall', function(req,res) {
+      var id = req.query.id
+
+      SportPost.find({},function(err,posts) {
+        var postsMap = {};
+        posts.forEach(function(post) {
+          if ( post._id == id) {
+            res.json({status: "Success", data: post});
+          }
+        });
+      })
+    });
+
+    app.get('/post/:postID', function(req,res) {
+      var requestID = req.params.postID;
+      var firstName = req.user.local.first_name;
+      var lastName = req.user.local.last_name;
+      console.log("worked");
+
+      res.render('sportspost.ejs');
+
+    })
 
     // =====================================
     // LOGIN ===============================
@@ -26,8 +55,16 @@ module.exports = function(app, passport) {
     });
 
     app.post("/submitpost", function(req,res) {
-      console.log(req.body);
-      res.redirect("/");
+      SportPost.create({
+           id: "lol",
+           category: "lol",
+           header: req.body.postname,
+           shortdescription: req.body.postdes,
+           longdescription: "lol"
+         }, function (err, small) {
+           if (err) return handleError(err);
+           res.redirect("/");
+      });
     })
 
     app.post("/cancelpost", function(req,res) {
@@ -37,6 +74,8 @@ module.exports = function(app, passport) {
     app.post('/newpost', function(req,res) {
       var firstName = req.user.local.first_name;
       var lastName = req.user.local.last_name;
+
+
       res.render('newpost.ejs', {first_name: firstName, last_name: lastName})
     })
 

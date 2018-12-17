@@ -1,14 +1,14 @@
-<!-- views/index.ejs -->
 <!doctype html>
 <html>
 <head>
     <title>Node Authentication</title>
-    <link rel="stylesheet" href="styles.css"> <!-- load fontawesome -->
+    <!-- load fontawesome -->
+    <link rel="stylesheet" href="http://localhost:3000/styles.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-
 </head>
 <body>
+
 
   <div class="stuck-header-index">
       <div class="login-signup-index">
@@ -16,16 +16,6 @@
         <a href="/signup"  class="btn btn-default" ><span class="fa fa-user"></span> Signup</a>
       </div>
   </div>
-
-  <div class="main-content">
-    <% for (let value of Object.values( sports_data) ) { %>
-        <div style ="width: 700px; height: 200px; margin:auto; position:relative; background-color: lightgray;">
-          <h1> <%= value["header"] %> </h1>
-          <h4> <%= value["shortdescription"] %> </h4>
-        </div>
-    <% } %>
-  </div>
-
 
 
 
