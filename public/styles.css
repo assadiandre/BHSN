@@ -48,7 +48,7 @@ body {
   position: fixed; /* Sit on top of the page content */
   display: none; /* Hidden by default */
   width: 100%; /* Full width (cover the whole page) */
-  height: 100%; /* Full height (cover the whole page) */
+  height: 100%;
   top: 50px;
   left: 0;
   right: 0;
@@ -66,13 +66,13 @@ body {
 }
 
 .description-button{
-  position: absolute;
+  position: relative;
   display: inline-block;
   width: 80px;
   height: 40px;
-  top: 50%;
-  right: 10px;
-  transform: translateY(-50%);
+  float: right;
+  top: 5px;
+  margin-right: 10px;
 }
 
 .description-header-name {
@@ -86,7 +86,9 @@ body {
 
 .overlay-white {
   width: 80%;
-  height: calc(100%);
+  height: 100%;
+  display: block;
+  overflow: auto;
   margin:auto;
   margin-top: 0px;
   background-color: white;

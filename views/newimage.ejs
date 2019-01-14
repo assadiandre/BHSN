@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+    <title>New Post</title>
+
+    <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyDJWEaV6FACbNnKUeGm2inRC6Y1ibHHPA0",
+        authDomain: "sportsimages-5f27a.firebaseapp.com",
+        databaseURL: "https://sportsimages-5f27a.firebaseio.com",
+        projectId: "sportsimages-5f27a",
+        storageBucket: "sportsimages-5f27a.appspot.com",
+        messagingSenderId: "643272399202"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="main_logged_styles.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    <script src="newimage.js"></script>
+    <style>
+        body { padding-top:80px; }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+    <h1> Post Image</h1>
+    <!-- LOGIN FORM -->
+    <form action="/postImage" method="post">
+        <div class="form-group">
+            <input type="file" id="file-select" name="myfile" onchange="readURL(this);" />
+            <input type="image" id="uploaded-image" style="width:100%;" src="#" alt="No Image Selected" />
+        </div>
+
+        <div class="form-group">
+            <label>Comment</label>
+            <input type="text" id="post-comment" class="form-control" name="last_name">
+        </div>
+
+        <button onclick="uploadImageData()" class="btn btn-warning btn-lg">Post</button>
+    </form>
+
+
+</div>
+
+</div>
+</body>
+
+
+</html>

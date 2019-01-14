@@ -1,12 +1,14 @@
 <!doctype html>
 <html>
 <head>
-    <title>Node Authentication</title>
+    <title>App</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" href="styles.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" href="main_logged_styles.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
-
+    <script src="https://www.gstatic.com/firebasejs/5.7.2/firebase.js"></script>
+    <script src="main_logged_script.js"> </script>
 </head>
 <body>
 
@@ -39,34 +41,30 @@
       <div class="description-header">
         <h5 class="description-header-name"> Men's Game V.S. Odowd </h5>
         <button class="description-button" onclick="closeOverlay()"> X Close </button>
+
+        <form  method="post" action="/newImage">
+          <input name="submit" class="description-button" type="submit" value="+">
+        </form>
+
+        <!-- <button class="description-button" onclick=""> Add Photo </button> -->
       </div>
+
+      <div class="overlay-content">
+        <!-- <% for (var i= 0; i < 40; i++) { %>
+          <div class="card">
+            <img src="img_avatar.png" alt="Avatar" style="width:100%">
+            <div class="container">
+              <h4><b>John Doe</b></h4>
+              <p>Architect & Engineer</p>
+            </div>
+          </div>
+        <% } %> -->
+      </div>
+
+
     </div>
   </div>
 </div>
-
-  <script>
-    function closeOverlay(){
-      $(".overlay").css("display","none");
-      $("body").css("overflow","auto");
-    }
-    function getData(id) {
-
-      $.ajax({
-        type: 'GET',
-        data: {"id" :  id },
-        url: 'http://localhost:3000/ajaxcall',
-        dataType: 'json'
-      })
-      .done(function(response) {
-        $(".overlay").css("display","initial");
-        $("body").css("overflow","hidden");
-        console.log(response)
-        $(".description-header-name").html(response.data.header);
-
-      })
-    }
-  </script>
-
 
 </body>
 </html>

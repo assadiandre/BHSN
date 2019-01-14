@@ -1,5 +1,5 @@
 // app/routes.js
-module.exports = function(app, passport, SportPost, User) {
+module.exports = function(app, passport, SportPost, User, SubPost) {
 
     // =====================================
     // HOME PAGE (with login links) ========
@@ -32,6 +32,18 @@ module.exports = function(app, passport, SportPost, User) {
           }
         });
       })
+    });
+
+    app.get('/uploadSubPostMessage', function(req,res) {
+      var message = req.query.message
+      var category_id = req.query.category_id
+      SubPost.create({
+          message: message,
+          category_id: category_id
+        }, function (err, result) {
+           res.json({status: "Success", data: result._id});
+      });
+
     });
 
     app.get('/post/:postID', function(req,res) {
@@ -68,7 +80,15 @@ module.exports = function(app, passport, SportPost, User) {
     })
 
     app.post("/cancelpost", function(req,res) {
-      res.redirect("/");
+      res.redirect("/")
+    })
+
+    app.post("/newImage", function(req,res) {
+      res.render("newimage.ejs")
+    })
+
+    app.post("/postImage", function(req,res) {
+      console.log("server code hit")
     })
 
     app.post('/newpost', function(req,res) {
