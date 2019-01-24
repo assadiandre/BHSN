@@ -35,7 +35,7 @@ require('./app/routes.js')(app, passport, sportPost, users, subPost);
 require('./config/passport')(passport); // pass passport for configuration
 
 //start server
-var port     = process.env.PORT || 3000;
+var port     = port = process.env.PORT || 80;
 app.listen(port, () => {
     console.log('Working...')
 })
