@@ -14,3 +14,8 @@
 
       })
     }
+
+
+    function closeOverlay() {
+      $(".overlay").css("display","none");
+    }
