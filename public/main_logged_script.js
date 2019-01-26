@@ -3,7 +3,7 @@
       $.ajax({
         type: 'GET',
         data: {"id" :  id },
-        url: 'http://localhost:3000/ajaxcall',
+        url: 'https://bhsn.herokuapp.com/ajaxcall',
         dataType: 'json'
       })
       .done(function(response) {
