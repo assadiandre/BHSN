@@ -17,4 +17,5 @@
 
     function closeOverlay() {
       $(".overlay").css("display","none");
+      $("body").css("overflow","auto");
     }
